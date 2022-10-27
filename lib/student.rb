@@ -10,5 +10,7 @@ class Student
     @scores = []
   end
 
-
+  def log_score(score)
+    @scores.push(score)
+  end
 end
