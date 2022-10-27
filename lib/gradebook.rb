@@ -13,9 +13,14 @@ class Gradebook
   end
 
   def list_courses
-    courses_list = @courses.sum do |course|
-      "   #{courese.name}: Capacity: #{course.capacity}/n"
+    courses_list = ""
+    @courses.each do |course|
+      courses_list += "   #{course.name}: Capacity: #{course.capacity}/n"
     end
     courses_list.insert(0, "#{@instructor}'s Courses:/n")
+  end
+
+  def list_students
+
   end
 end

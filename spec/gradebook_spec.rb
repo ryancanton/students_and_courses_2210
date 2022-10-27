@@ -32,10 +32,12 @@ RSpec.describe Gradebook do
       course_2 = Course.new("Philosophy", 3)
       gradebook.add_course(course_1)
       gradebook.add_course(course_2)
-
+      
       expect(gradebook.list_courses).to eq("Mr. Oz's Courses:/n" +
                                            "   Calculus: Capacity: 2/n" +
                                            "   Philosophy: Capacity: 3/n")
     end
   end
+
+
 end
