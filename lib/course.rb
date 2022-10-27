@@ -10,4 +10,11 @@ class Course
     @students = []
   end
 
+  def full?
+    @students.count == @capacity
+  end
+
+  def enroll(student)
+    @students.push(student)
+  end
 end
