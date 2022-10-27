@@ -24,4 +24,18 @@ RSpec.describe Gradebook do
       expect(gradebook.courses).to eq([course_1, course_2])
     end
   end
+
+  describe '#list_courses' do
+    it 'correctly lists all courses in a gradebook' do
+      gradebook = Gradebook.new("Mr. Oz")
+      course_1 = Course.new("Calculus", 2)
+      course_2 = Course.new("Philosophy", 3)
+      gradebook.add_course(course_1)
+      gradebook.add_course(course_2)
+
+      expect(gradebook.list_courses).to eq("Mr. Oz's Courses:/n" +
+                                           "   Calculus: Capacity: 2/n" +
+                                           "   Philosophy: Capacity: 3/n")
+    end
+  end
 end
