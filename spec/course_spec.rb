@@ -14,12 +14,14 @@ RSpec.describe Course do
   end
 
   describe '#enroll' do
-    it 'corretly adds students to course' do
+    it 'corretly adds students to course if not full' do
       course = Course.new("Calculus", 2)
       student_1 = Student.new({name: "Morgan", age: 21})
       student_2 = Student.new({name: "Grigor", age: 20})
+      student_3 = Student.new({name: "Bob", age: 21})
       course.enroll(student_1)
       course.enroll(student_2)
+      course.enroll(student_3)
 
       expect(course.students).to eq([student_1, student_2])
     end

@@ -15,6 +15,8 @@ class Course
   end
 
   def enroll(student)
-    @students.push(student)
+    if !full?
+      @students.push(student)
+    end
   end
 end
