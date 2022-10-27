@@ -55,13 +55,36 @@ RSpec.describe Gradebook do
       course_2.enroll(student_3)
       gradebook.add_course(course_1)
       gradebook.add_course(course_2)
-      
+
       expect(gradebook.list_students).to eq("Mr. Oz's Students:\n" +
                                            "   Calculus:\n" +
                                            "      Name: Morgan, Age: 21, Grade: 89.0\n" +
                                            "      Name: Grigor, Age: 20, Grade: 76.0\n" +
                                            "   Philosophy:\n" +
                                            "      Name: Bob, Age: 21, Grade: 99.0\n")
+    end
+  end
+
+  describe '#students_below_threshold' do
+    it 'correctly lists students below a certain grade' do
+      gradebook = Gradebook.new("Mr. Oz")
+      course_1 = Course.new("Calculus", 2)
+      course_2 = Course.new("Philosophy", 3)
+      student_1 = Student.new({name: "Morgan", age: 21})
+      student_2 = Student.new({name: "Grigor", age: 20})
+      student_3 = Student.new({name: "Bob", age: 21})
+      student_1.log_score(89)
+      student_2.log_score(76)
+      student_3.log_score(99)
+      course_1.enroll(student_1)
+      course_1.enroll(student_2)
+      course_2.enroll(student_3)
+      gradebook.add_course(course_1)
+      gradebook.add_course(course_2)
+
+      expect(gradebook.students_below_threshold(90)).to eq("Mr. Oz's Students Below 90.0:\n" +
+                                                           "   Name: Morgan, Course: Calculus, Grade: 89.0\n" +
+                                                           "   Name: Grigor, Course: Calculus, Grade: 76.0\n")
     end
   end
 end

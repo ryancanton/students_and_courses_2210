@@ -30,4 +30,16 @@ class Gradebook
     end
     student_list.insert(0, "#{@instructor}'s Students:\n")
   end
+
+  def students_below_threshold(threshold)
+    list = ""
+    @courses.each do |course|
+      course.students.each do |student|
+        if (student.grade < threshold.to_f)
+          list += "   Name: #{student.name}, Course: #{course.name}, Grade: #{student.grade}\n"
+        end
+      end
+    end
+    list.insert(0, "#{@instructor}'s Students Below #{threshold.to_f}:\n")
+  end
 end
