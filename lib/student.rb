@@ -13,4 +13,8 @@ class Student
   def log_score(score)
     @scores.push(score)
   end
+
+  def grade
+    average_pts = @scores.sum / @scores.count.to_f
+  end
 end

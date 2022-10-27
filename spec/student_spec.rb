@@ -22,6 +22,13 @@ RSpec.describe Student do
     end
   end
 
+  describe '#grade' do
+    it 'corrrectly calculates grade by averaging all scores' do
+      student = Student.new({name: "Morgan", age: 21})
+      student.log_score(89)
+      student.log_score(78)
 
-
+      expect(student.grade).to eq(83.5)
+    end
+  end
 end
