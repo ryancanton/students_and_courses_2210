@@ -8,5 +8,7 @@ class Gradebook
     @courses = []
   end
 
-
+  def add_course(course)
+    @courses.push(course)
+  end
 end
